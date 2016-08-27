@@ -66,8 +66,7 @@ import dao.exception.DAOConfigurationException;
  * UserDAO userDAO = javabase.getUserDAO();
  * </pre>
  *
- * @author BalusC
- * @link http://balusc.blogspot.com/2008/07/dao-tutorial-data-layer.html
+ * @author Ahmed Gamal
  */
 public abstract class DAOFactory {
 

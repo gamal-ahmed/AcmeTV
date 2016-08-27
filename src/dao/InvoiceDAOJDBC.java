@@ -181,16 +181,21 @@ public class InvoiceDAOJDBC implements InvoiceDAO {
 	 */
 	private static Invoice map(ResultSet resultSet) throws SQLException {
 		Invoice invoice = new Invoice();
+		invoice.setCustomerId(resultSet.getLong("customerId"));
 
 		invoice.setInvoiceId(resultSet.getLong("invoiceId"));
 		invoice.setAddressId(resultSet.getLong("addressId"));
+		invoice.setInvoiceType(resultSet.getString("invoiceType"));
+		invoice.setInvoiceNumber(resultSet.getLong("invoiceNumber"));
 		invoice.setAmount(resultSet.getLong("amount"));
 		invoice.setStartDate(resultSet.getDate("startDate"));
+		invoice.setInvoiceDate(resultSet.getDate("invoiceDate"));
 		invoice.setEndDate(resultSet.getDate("endDate"));
+		invoice.setInvoiceTypeLocalized(resultSet.getString("invoiceTypeLocalized"));
 		invoice.setPaymentDueDate(resultSet.getDate("paymentDueDate"));
 		invoice.setPeriodDescription(resultSet.getString("periodDescription"));
 		invoice.setVatAmount(resultSet.getLong("vatAmount"));
-
+		invoice.setTotalAmount(resultSet.getString("totalAmount"));
 		return invoice;
 	}
 
