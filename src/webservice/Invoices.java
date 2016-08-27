@@ -38,7 +38,7 @@ public class Invoices {
 
 	}
 
-	// http://localhost/sysapi/v1.0/invoices/?customerId=1&filter=shop&month=3
+	// http://localhost/sysapi/v1.0/shop/?customerId=1&filter=shop&month=3
 
 	@GET
 	@Path("/invoices/shop")
@@ -68,7 +68,7 @@ public class Invoices {
 	@Produces("application/json")
 	public Response invoicesHistoryPerAddress(
 			@QueryParam(value = "customerId") Long customerId,
-			@QueryParam(value = "address") String addressId) {
+			@QueryParam(value = "addressId") String addressId) {
 		InvoicesResponse response = new InvoicesResponse();
 
 		List<Invoice> invoicesList;
