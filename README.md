@@ -9,7 +9,8 @@ can have multiple addresses resulting in a monthly invoice per address.
 4. Apache Tomcat 6.0
 5. junit 4.0
 6. log4j 1.2.17
-7. Eclipse 3.6
+7. MYSQL (DBMS)
+8. Eclipse 3.6
 
 Note :project is well structred using design patterns , OOD , Clean codeing , well commented , documented and unit tested
 
@@ -25,7 +26,7 @@ install and run the application just in few steps :
 ### install
 1. clone or download the code 
 2. run database script located in AcmeTV/SQL/Script.sql
-3.update database properties in <code>dao.factory.DAOFactory</code> 
+3. update database properties in <code>dao.factory.DAOFactory @{getInstance()}</code> 
 <pre>
 	String url = "jdbc:mysql://localhost:3306/dbName";
 		String driverClassName = "com.mysql.jdbc.Driver";
