@@ -7,9 +7,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
-
+import webservice.response.InvoicesResponse;
 import com.google.gson.Gson;
-
 import dao.InvoiceDAOJDBC;
 import dao.factory.DAOFactory;
 import dao.model.Invoice;
@@ -24,6 +23,8 @@ public class Invoices {
 	public Response getInvoicesPerMonth(
 			@QueryParam(value = "customerId") Long customerId,
 			@QueryParam(value = "month") int month) {
+		InvoicesResponse response = new InvoicesResponse();
+
 		List<Invoice> invoicesList;
 		DAOFactory factory = DAOFactory.getInstance("javabase.jdbc");
 		InvoiceDAOJDBC invoicesJDBC = new InvoiceDAOJDBC(factory);
@@ -31,8 +32,8 @@ public class Invoices {
 		invoicesList = invoicesJDBC.getInvoicesOfCustomersOfMonth(customerId,
 				month);
 		Gson gson = new Gson();
-		String json = gson.toJson(invoicesList.get(0));
-
+		response.setInvoices(invoicesList);
+		String json = gson.toJson(response);
 		return Response.status(200).entity(json).build();
 
 	}
@@ -46,6 +47,8 @@ public class Invoices {
 			@QueryParam(value = "customerId") Long customerId,
 			@QueryParam(value = "month") int month,
 			@QueryParam(value = "filter") String filter) {
+		InvoicesResponse response = new InvoicesResponse();
+
 		List<Invoice> invoicesList;
 		DAOFactory factory = DAOFactory.getInstance("javabase.jdbc");
 		InvoiceDAOJDBC invoicesJDBC = new InvoiceDAOJDBC(factory);
@@ -53,8 +56,8 @@ public class Invoices {
 		invoicesList = invoicesJDBC.getShopInvoicesOfCustomersPerMonth(
 				customerId, month, filter);
 		Gson gson = new Gson();
-		String json = gson.toJson(invoicesList.get(0));
-
+		response.setInvoices(invoicesList);
+		String json = gson.toJson(response);
 		return Response.status(200).entity(json).build();
 
 	}
@@ -66,13 +69,16 @@ public class Invoices {
 	public Response invoicesHistoryPerAddress(
 			@QueryParam(value = "customerId") Long customerId,
 			@QueryParam(value = "address") String addressId) {
+		InvoicesResponse response = new InvoicesResponse();
+
 		List<Invoice> invoicesList;
 		DAOFactory factory = DAOFactory.getInstance("javabase.jdbc");
 		InvoiceDAOJDBC invoicesJDBC = new InvoiceDAOJDBC(factory);
 		invoicesList = invoicesJDBC.getShopInvoicesOfPerAddress(customerId,
 				addressId);
 		Gson gson = new Gson();
-		String json = gson.toJson(invoicesList.get(0));
+		response.setInvoices(invoicesList);
+		String json = gson.toJson(response);
 		return Response.status(200).entity(json).build();
 
 	}
@@ -83,12 +89,16 @@ public class Invoices {
 	@Produces("application/json")
 	public Response allCustomerInvoices(
 			@QueryParam(value = "customerId") Long customerId) {
+		InvoicesResponse response = new InvoicesResponse();
 		List<Invoice> invoicesList;
+
 		DAOFactory factory = DAOFactory.getInstance("javabase.jdbc");
 		InvoiceDAOJDBC invoicesJDBC = new InvoiceDAOJDBC(factory);
 		invoicesList = invoicesJDBC.getInvoicesOfCustomer(customerId);
+		response.setInvoices(invoicesList);
 		Gson gson = new Gson();
-		String json = gson.toJson(invoicesList.get(0));
+
+		String json = gson.toJson(response);
 		return Response.status(200).entity(json).build();
 
 	}
