@@ -21,6 +21,7 @@ CREATE TABLE invoices_system.`invoice` (
 
 INSERT INTO `invoice`(`customerId`,`addressId`,`invoiceType`,`invoiceTypeLocalized`,`invoiceDate`,`paymentDueDate`,`invoiceNumber`,`startDate`,`endDate`,`periodDescription`,`amount`,`vatAmount`,`totalAmount`) VALUES (2,8212154,'AdvancePayment','Voorschot','2016-02-02 00:00:00','2016-03-01 00:00:00','1','2016-08-01 01:00:00','2016-08-01 00:00:00','invoices_systema','32','432','423423');
 INSERT INTO `invoice`(`customerId`,`addressId`,`invoiceType`,`invoiceTypeLocalized`,`invoiceDate`,`paymentDueDate`,`invoiceNumber`,`startDate`,`endDate`,`periodDescription`,`amount`,`vatAmount`,`totalAmount`) VALUES (1,8212155,'ShopPurchase','q','2016-02-02 00:00:00','2016-03-01 00:00:00','2','2016-08-01 01:00:00','2016-08-01 00:00:00','w','2','3','4');
+INSERT INTO `invoice`(`customerId`,`addressId`,`invoiceType`,`invoiceTypeLocalized`,`invoiceDate`,`paymentDueDate`,`invoiceNumber`,`startDate`,`endDate`,`periodDescription`,`amount`,`vatAmount`,`totalAmount`) VALUES (1,8212156,'ShopPurchase','q','2016-02-02 00:00:00','2016-03-01 00:00:00','2','2016-08-01 01:00:00','2016-08-01 00:00:00','w','2','3','4');
 
 
 CREATE TABLE invoices_system.`customer` (
